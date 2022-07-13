@@ -3,7 +3,7 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const classes = require("./lib/class");
+const Employee = require("./lib/Employee");
 const teamGenerator = require("./teamGenerator.js");
 const theAssignedTeam = [ ];
 
@@ -18,10 +18,9 @@ const questionsManager = () =>
 
     {
         type: "input",
-        name: "position",
-        message: "What is the employee's position?"
+        name: "id",
+        message: "What is the employee's Id?"
     },
-
     {
         type: "input",
         name: "email",
@@ -35,7 +34,7 @@ const questionsManager = () =>
     },   
 
     ])
-        ().then(answers => {
+        .then(answers => {
             console.log(answers);
             const manager = new Manager(answers.name, answers.employeeID, answers.email, answers.officeNumber);
             theAssignedTeam.push(manager);
@@ -95,7 +94,7 @@ const engineerQuestions = () => {
     .then(answers => {
         console.log(answers);
         const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.GitHubUser);
-        teamMembers.push(engineer);
+        theAssignedTeam.push(engineer);
         promptTeambuild();
     })
 };
@@ -127,8 +126,8 @@ const internQuestions = () => {
     ])
     .then(answers => {
         console.log(answers);
-        const intern = new intern(answers.name, answers.employeeId, answers.email, answers.school);
-        teamMembers.push(intern);
+        const intern = new Intern(answers.name, answers.employeeId, answers.email, answers.school);
+        theAssignedTeam.push(intern);
         promptTeambuild();
     })
 };
