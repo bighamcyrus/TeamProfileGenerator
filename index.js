@@ -4,7 +4,8 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Employee = require("./lib/Employee");
-const teamGenerator = require("./teamGenerator.js");
+const siteCreator = require("./src/theSite");
+// const distPath = path.join(dist)
 const theAssignedTeam = [ ];
 
 const questionsManager = () => 
@@ -38,11 +39,11 @@ const questionsManager = () =>
             console.log(answers);
             const manager = new Manager(answers.name, answers.employeeID, answers.email, answers.officeNumber);
             theAssignedTeam.push(manager);
-            promtTeambuild();
+            promptTeambuild();
         })
 };
 
-const promtTeambuild = () => {
+const promptTeambuild = () => {
     return inquirer.prompt([
         {
             type:"list",
@@ -52,7 +53,7 @@ const promtTeambuild = () => {
         }
     ])
     .then(userChoice => {
-        switch (userChoice.initialQuestions) {
+        switch (userChoice.menu) {
             // prompt different questions based on answers to initialQuesitons
             case "engineer":
                 engineerQuestions();
@@ -61,7 +62,8 @@ const promtTeambuild = () => {
                     internQuestions();
                     break;
                     // need a function to put your team choices below
-                    buildTeam();
+                    default:
+                    finishedTeam();
         }
         
     });
@@ -133,8 +135,10 @@ const internQuestions = () => {
 };
 
 const finishedTeam = () => {
+    console.log("Your Team is Ready!");
 
-
+// document.createElement("div")
+fs.writeFileSync("dist/index.html", siteCreator(theAssignedTeam), "utf-8");
 }
 
 questionsManager()
