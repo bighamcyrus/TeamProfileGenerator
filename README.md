@@ -3,7 +3,7 @@
 
 Github code repo: https://github.com/bighamcyrus/TeamProfileGenerator
 
-video showcasing working code: chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/b182806e-29e8-48b1-y39a-7802ef90865a
+video showcasing working code: https://drive.google.com/file/d/1AncCv8ss0kb2c7IbVff87k9XOzNXqVOb/view
 
 The _Test_ folder given to us by instructor during homework hours
 
